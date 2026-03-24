@@ -1,0 +1,63 @@
+{
+  "identifier" : "CharinStoreKit",
+  "nonConsumableProducts" : [],
+  "nonRenewingSubscriptions" : [],
+  "autoRenewableSubscriptions" : [
+    {
+      "familyShareable" : false,
+      "localizations" : [
+        {
+          "description" : "無制限の請求書作成・PDFエクスポート・CSV確定申告など全機能が使い放題",
+          "displayName" : "Proプラン",
+          "locale" : "ja_JP"
+        },
+        {
+          "description" : "Unlimited invoices, PDF export, and all features",
+          "displayName" : "Pro Plan",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "com.enablerdao.charin.pro",
+      "referenceName" : "Proプラン",
+      "subscriptionGroupID" : "charin-pro-group",
+      "subscriptions" : [
+        {
+          "duration" : "P1M",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "無制限の請求書作成・PDFエクスポート・CSV確定申告など全機能が使い放題",
+              "displayName" : "Proプラン 月額",
+              "locale" : "ja_JP"
+            },
+            {
+              "description" : "Unlimited invoices, PDF export, and all features",
+              "displayName" : "Pro Plan Monthly",
+              "locale" : "en_US"
+            }
+          ],
+          "paymentMode" : "PayAsYouGo",
+          "productID" : "com.enablerdao.charin.pro",
+          "referenceName" : "月額プラン",
+          "recurringSubscriptionPeriod" : "P1M",
+          "subscriptionGroupID" : "charin-pro-group",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "consumableProducts" : [],
+  "settings" : {
+    "_developerTeamID" : "5BV85JW8US",
+    "_failTransactionsEnabled" : false,
+    "_localReceiptURL" : null,
+    "_shouldAddStorePaymentAutomatically" : true,
+    "_timeRate" : 1,
+    "_storefront" : "JPN",
+    "_storeKitErrors" : []
+  },
+  "version" : {
+    "major" : 2,
+    "minor" : 0
+  }
+}

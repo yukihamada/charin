@@ -1,0 +1,545 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 54;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		065ABD97415C9CD62A100C79 /* IncomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011CC6BE07E2E4527C85CABB /* IncomeListView.swift */; };
+		14269F95C87487A3CB4C71F0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77F17120DA2DAC6C35B869FA /* MessageUI.framework */; };
+		2A6EEA0F0F26764A98FF5388 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0022AAA8681047E01D6152F /* SettingsView.swift */; };
+		31ABF16A4A24497C25D49B9C /* SubscriptionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EB8FD6B62D0A5D90903C78 /* SubscriptionManager.swift */; };
+		45D8444CB0487F2FF3A2058D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6DDF3518BE642DE13468F6 /* HomeView.swift */; };
+		48EADD18AE96CB6573FD4508 /* PaymentReminderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C306C993F420A1DCB2FEA9A8 /* PaymentReminderView.swift */; };
+		4CC18578F4CF8D5E275E3DF8 /* ClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABBB6BDD6CE5E755F8C7EDC3 /* ClientManager.swift */; };
+		4EE8DB4CC04977A55C15AA1F /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7641CB1F0B6C74CE2FC1BDC3 /* ReportView.swift */; };
+		52E1DD38DD3219E7D207EBC7 /* AddIncomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9349A17FC70FE53D30C6716 /* AddIncomeView.swift */; };
+		55A3D657D64E789E7B82666F /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC0B7F94BA0DFF4A95E8C1E /* OnboardingView.swift */; };
+		56CEBE298833FAE15EF360F9 /* CharinApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F4B821F50E4D2FB2054F05 /* CharinApp.swift */; };
+		68D6281C5DC423AACE949B38 /* charin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 08D7A76161F0028716F4D363 /* charin.wav */; };
+		69806EED481177CFFC3F088D /* CharinWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A5C21D311F3BC3EE6868E67 /* CharinWidget.swift */; };
+		6A4F4398126A6024BD9CADE2 /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68442ADFBC47EEEEAFA55B29 /* NotificationManager.swift */; };
+		7A2913C43432BA0B0748B64B /* SeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FCFF97A42B0918AFCA30FF4 /* SeedData.swift */; };
+		90FD317464F0552BA64D9BB1 /* Income.swift in Sources */ = {isa = PBXBuildFile; fileRef = 790A01579AF4CF4F0408E0A2 /* Income.swift */; };
+		92312FCE23D58BE6D053CDD7 /* IncomeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47FCF8E10FCD72C007F3DEE /* IncomeDetailView.swift */; };
+		92BCB8A08F05A8672FCE0CC0 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13D437F1948F189C16571587 /* Client.swift */; };
+		9E8E2C47C337755A2D3E0B7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AF46A3984346C2EA03BC8EC /* Assets.xcassets */; };
+		A279CF7723B033CFD061DC7E /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB1D78EE489897D32E962A2 /* SoundPlayer.swift */; };
+		ABE9DF1C4ADB8C483B434478 /* InvoiceRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2511624BB116A136D576DA09 /* InvoiceRenderer.swift */; };
+		CC5D16FC14D33AEE0A2E67BB /* ProGateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4394A65214E3038DF01945 /* ProGateView.swift */; };
+		D2BA28165EEFE9CEF0102B21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181099B05A4358B64F01CEF9 /* ContentView.swift */; };
+		D308AA46E9EB6F4C822A06FE /* InvoicePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C922F0CD723236384DDED3B3 /* InvoicePreviewView.swift */; };
+		E31DEAF74451A4C5528E08D7 /* CelebrationEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D21F6E8EEC4AB465E2BB70A /* CelebrationEffect.swift */; };
+		ECD075142D1D961B9139B8EA /* CharinIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D855A699B43EADCFC18264 /* CharinIntents.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		23566EE6E302DCD565BD30E4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B2882952CF87FB37EEA4E3D9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AF2CDCB46E7EC3179CF29EB5;
+			remoteInfo = Charin;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		011CC6BE07E2E4527C85CABB /* IncomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListView.swift; sourceTree = "<group>"; };
+		08D7A76161F0028716F4D363 /* charin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = charin.wav; sourceTree = "<group>"; };
+		13D437F1948F189C16571587 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		181099B05A4358B64F01CEF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1A4394A65214E3038DF01945 /* ProGateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProGateView.swift; sourceTree = "<group>"; };
+		2511624BB116A136D576DA09 /* InvoiceRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceRenderer.swift; sourceTree = "<group>"; };
+		3AF46A3984346C2EA03BC8EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4A5C21D311F3BC3EE6868E67 /* CharinWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharinWidget.swift; sourceTree = "<group>"; };
+		60D855A699B43EADCFC18264 /* CharinIntents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharinIntents.swift; sourceTree = "<group>"; };
+		68442ADFBC47EEEEAFA55B29 /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		69F4B821F50E4D2FB2054F05 /* CharinApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharinApp.swift; sourceTree = "<group>"; };
+		760122D5946B6BD25127D1DA /* CharinWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CharinWidget.entitlements; sourceTree = "<group>"; };
+		7641CB1F0B6C74CE2FC1BDC3 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
+		77F17120DA2DAC6C35B869FA /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		790A01579AF4CF4F0408E0A2 /* Income.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Income.swift; sourceTree = "<group>"; };
+		7D772ABC7FD891889D0B1B5A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		839195BDD19B2A9753877E6F /* Charin.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Charin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A6DDF3518BE642DE13468F6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		9D21F6E8EEC4AB465E2BB70A /* CelebrationEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelebrationEffect.swift; sourceTree = "<group>"; };
+		9EB1D78EE489897D32E962A2 /* SoundPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		9FCFF97A42B0918AFCA30FF4 /* SeedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeedData.swift; sourceTree = "<group>"; };
+		A7EB8FD6B62D0A5D90903C78 /* SubscriptionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionManager.swift; sourceTree = "<group>"; };
+		ABBB6BDD6CE5E755F8C7EDC3 /* ClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientManager.swift; sourceTree = "<group>"; };
+		C306C993F420A1DCB2FEA9A8 /* PaymentReminderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentReminderView.swift; sourceTree = "<group>"; };
+		C922F0CD723236384DDED3B3 /* InvoicePreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoicePreviewView.swift; sourceTree = "<group>"; };
+		D9349A17FC70FE53D30C6716 /* AddIncomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeView.swift; sourceTree = "<group>"; };
+		E0022AAA8681047E01D6152F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E47FCF8E10FCD72C007F3DEE /* IncomeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeDetailView.swift; sourceTree = "<group>"; };
+		E8A75F1CA4A779AE9D9F240A /* CharinWidget.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = CharinWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		FEC0B7F94BA0DFF4A95E8C1E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5CEDCD41D7A45948EE269579 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				14269F95C87487A3CB4C71F0 /* MessageUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0BB84D525C15573A6574990B /* CharinWidget */ = {
+			isa = PBXGroup;
+			children = (
+				760122D5946B6BD25127D1DA /* CharinWidget.entitlements */,
+				4A5C21D311F3BC3EE6868E67 /* CharinWidget.swift */,
+				7D772ABC7FD891889D0B1B5A /* Info.plist */,
+			);
+			path = CharinWidget;
+			sourceTree = "<group>";
+		};
+		4ECBF8EBDD604F3797B7FEDA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3AF46A3984346C2EA03BC8EC /* Assets.xcassets */,
+				08D7A76161F0028716F4D363 /* charin.wav */,
+			);
+			name = Resources;
+			path = Charin/Resources;
+			sourceTree = "<group>";
+		};
+		70279524B0BBE8BB563A8888 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				77F17120DA2DAC6C35B869FA /* MessageUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8978A7A369358C4C810C93C0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				839195BDD19B2A9753877E6F /* Charin.app */,
+				E8A75F1CA4A779AE9D9F240A /* CharinWidget.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6767586282FD9DBD7E6D084 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D9349A17FC70FE53D30C6716 /* AddIncomeView.swift */,
+				9D21F6E8EEC4AB465E2BB70A /* CelebrationEffect.swift */,
+				69F4B821F50E4D2FB2054F05 /* CharinApp.swift */,
+				60D855A699B43EADCFC18264 /* CharinIntents.swift */,
+				13D437F1948F189C16571587 /* Client.swift */,
+				ABBB6BDD6CE5E755F8C7EDC3 /* ClientManager.swift */,
+				181099B05A4358B64F01CEF9 /* ContentView.swift */,
+				8A6DDF3518BE642DE13468F6 /* HomeView.swift */,
+				790A01579AF4CF4F0408E0A2 /* Income.swift */,
+				E47FCF8E10FCD72C007F3DEE /* IncomeDetailView.swift */,
+				011CC6BE07E2E4527C85CABB /* IncomeListView.swift */,
+				C922F0CD723236384DDED3B3 /* InvoicePreviewView.swift */,
+				2511624BB116A136D576DA09 /* InvoiceRenderer.swift */,
+				68442ADFBC47EEEEAFA55B29 /* NotificationManager.swift */,
+				FEC0B7F94BA0DFF4A95E8C1E /* OnboardingView.swift */,
+				C306C993F420A1DCB2FEA9A8 /* PaymentReminderView.swift */,
+				1A4394A65214E3038DF01945 /* ProGateView.swift */,
+				7641CB1F0B6C74CE2FC1BDC3 /* ReportView.swift */,
+				9FCFF97A42B0918AFCA30FF4 /* SeedData.swift */,
+				E0022AAA8681047E01D6152F /* SettingsView.swift */,
+				9EB1D78EE489897D32E962A2 /* SoundPlayer.swift */,
+				A7EB8FD6B62D0A5D90903C78 /* SubscriptionManager.swift */,
+			);
+			name = Sources;
+			path = Charin/Sources;
+			sourceTree = "<group>";
+		};
+		C838AE81BEC42E75250092E1 = {
+			isa = PBXGroup;
+			children = (
+				0BB84D525C15573A6574990B /* CharinWidget */,
+				4ECBF8EBDD604F3797B7FEDA /* Resources */,
+				C6767586282FD9DBD7E6D084 /* Sources */,
+				70279524B0BBE8BB563A8888 /* Frameworks */,
+				8978A7A369358C4C810C93C0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AF2CDCB46E7EC3179CF29EB5 /* Charin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C6DF4AA2A8D0A459A78BC518 /* Build configuration list for PBXNativeTarget "Charin" */;
+			buildPhases = (
+				9B0F2FA531B4D781F663A6E3 /* Sources */,
+				1AE349024B7EB01CC5484AFB /* Resources */,
+				5CEDCD41D7A45948EE269579 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Charin;
+			packageProductDependencies = (
+			);
+			productName = Charin;
+			productReference = 839195BDD19B2A9753877E6F /* Charin.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D3A0CD2B5C10FC4D0914C260 /* CharinWidget */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9505DD1B9891867CA698DCB3 /* Build configuration list for PBXNativeTarget "CharinWidget" */;
+			buildPhases = (
+				6DDAFBA9BFBD967A831879E7 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				56E8069CF61E14732BA976AB /* PBXTargetDependency */,
+			);
+			name = CharinWidget;
+			packageProductDependencies = (
+			);
+			productName = CharinWidget;
+			productReference = E8A75F1CA4A779AE9D9F240A /* CharinWidget.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B2882952CF87FB37EEA4E3D9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					AF2CDCB46E7EC3179CF29EB5 = {
+						DevelopmentTeam = 5BV85JW8US;
+						ProvisioningStyle = Automatic;
+					};
+					D3A0CD2B5C10FC4D0914C260 = {
+						DevelopmentTeam = 5BV85JW8US;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 9F7499A5672E9AA89E084959 /* Build configuration list for PBXProject "Charin" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = C838AE81BEC42E75250092E1;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 54;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AF2CDCB46E7EC3179CF29EB5 /* Charin */,
+				D3A0CD2B5C10FC4D0914C260 /* CharinWidget */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1AE349024B7EB01CC5484AFB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9E8E2C47C337755A2D3E0B7D /* Assets.xcassets in Resources */,
+				68D6281C5DC423AACE949B38 /* charin.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6DDAFBA9BFBD967A831879E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				69806EED481177CFFC3F088D /* CharinWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9B0F2FA531B4D781F663A6E3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52E1DD38DD3219E7D207EBC7 /* AddIncomeView.swift in Sources */,
+				E31DEAF74451A4C5528E08D7 /* CelebrationEffect.swift in Sources */,
+				56CEBE298833FAE15EF360F9 /* CharinApp.swift in Sources */,
+				ECD075142D1D961B9139B8EA /* CharinIntents.swift in Sources */,
+				92BCB8A08F05A8672FCE0CC0 /* Client.swift in Sources */,
+				4CC18578F4CF8D5E275E3DF8 /* ClientManager.swift in Sources */,
+				D2BA28165EEFE9CEF0102B21 /* ContentView.swift in Sources */,
+				45D8444CB0487F2FF3A2058D /* HomeView.swift in Sources */,
+				90FD317464F0552BA64D9BB1 /* Income.swift in Sources */,
+				92312FCE23D58BE6D053CDD7 /* IncomeDetailView.swift in Sources */,
+				065ABD97415C9CD62A100C79 /* IncomeListView.swift in Sources */,
+				D308AA46E9EB6F4C822A06FE /* InvoicePreviewView.swift in Sources */,
+				ABE9DF1C4ADB8C483B434478 /* InvoiceRenderer.swift in Sources */,
+				6A4F4398126A6024BD9CADE2 /* NotificationManager.swift in Sources */,
+				55A3D657D64E789E7B82666F /* OnboardingView.swift in Sources */,
+				48EADD18AE96CB6573FD4508 /* PaymentReminderView.swift in Sources */,
+				CC5D16FC14D33AEE0A2E67BB /* ProGateView.swift in Sources */,
+				4EE8DB4CC04977A55C15AA1F /* ReportView.swift in Sources */,
+				7A2913C43432BA0B0748B64B /* SeedData.swift in Sources */,
+				2A6EEA0F0F26764A98FF5388 /* SettingsView.swift in Sources */,
+				A279CF7723B033CFD061DC7E /* SoundPlayer.swift in Sources */,
+				31ABF16A4A24497C25D49B9C /* SubscriptionManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		56E8069CF61E14732BA976AB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AF2CDCB46E7EC3179CF29EB5 /* Charin */;
+			targetProxy = 23566EE6E302DCD565BD30E4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		2E06CBD43351216BB35B90E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 5BV85JW8US;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		46F99429EB715B2FDF16FCF4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CharinWidget/CharinWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5BV85JW8US;
+				INFOPLIST_FILE = CharinWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.enablerdao.charin.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		50388D915DA9023A7E2E1EC8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 5BV85JW8US;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		69BEA726C12F7588CFC0CA3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = CharinWidget/CharinWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5BV85JW8US;
+				INFOPLIST_FILE = CharinWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.enablerdao.charin.widget;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		C3BF6B65F4B2BC16396CA8D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Charin/Charin.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Charin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.enablerdao.charin;
+				PRODUCT_NAME = Charin;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		CF752DCB4BC583969B0852D3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Charin/Charin.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = Charin/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.enablerdao.charin;
+				PRODUCT_NAME = Charin;
+				SDKROOT = iphoneos;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9505DD1B9891867CA698DCB3 /* Build configuration list for PBXNativeTarget "CharinWidget" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				46F99429EB715B2FDF16FCF4 /* Debug */,
+				69BEA726C12F7588CFC0CA3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		9F7499A5672E9AA89E084959 /* Build configuration list for PBXProject "Charin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				50388D915DA9023A7E2E1EC8 /* Debug */,
+				2E06CBD43351216BB35B90E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		C6DF4AA2A8D0A459A78BC518 /* Build configuration list for PBXNativeTarget "Charin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3BF6B65F4B2BC16396CA8D1 /* Debug */,
+				CF752DCB4BC583969B0852D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B2882952CF87FB37EEA4E3D9 /* Project object */;
+}
