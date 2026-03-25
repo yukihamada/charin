@@ -36,7 +36,9 @@ struct CharinApp: App {
                     SeedData.insertIfEmpty(context: container.mainContext)
                     ClientManager.seedIfEmpty(context: container.mainContext)
                     Task {
+                        #if !targetEnvironment(simulator)
                         await NotificationManager.shared.requestPermission()
+                        #endif
                     }
                 }
         }
