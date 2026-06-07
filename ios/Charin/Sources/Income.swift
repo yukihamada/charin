@@ -168,6 +168,7 @@ final class Income {
 
     static let defaultSources: [(name: String, category: String)] = [
         ("chatweb.ai", "subscription"),
+        ("KAGI", "one-time"),
         ("StayFlow", "subscription"),
         ("JiuFlow", "subscription"),
         ("Elio", "subscription"),

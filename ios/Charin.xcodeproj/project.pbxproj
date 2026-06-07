@@ -31,6 +31,7 @@
 		CC5D16FC14D33AEE0A2E67BB /* ProGateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A4394A65214E3038DF01945 /* ProGateView.swift */; };
 		D2BA28165EEFE9CEF0102B21 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181099B05A4358B64F01CEF9 /* ContentView.swift */; };
 		D308AA46E9EB6F4C822A06FE /* InvoicePreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C922F0CD723236384DDED3B3 /* InvoicePreviewView.swift */; };
+		D6CBA8353D8A9E7D651CE8F6 /* PendingIncomeSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AFBC96DDF328A0F5CEF54B /* PendingIncomeSync.swift */; };
 		E31DEAF74451A4C5528E08D7 /* CelebrationEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D21F6E8EEC4AB465E2BB70A /* CelebrationEffect.swift */; };
 		ECD075142D1D961B9139B8EA /* CharinIntents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D855A699B43EADCFC18264 /* CharinIntents.swift */; };
 /* End PBXBuildFile section */
@@ -49,6 +50,7 @@
 		011CC6BE07E2E4527C85CABB /* IncomeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeListView.swift; sourceTree = "<group>"; };
 		08D7A76161F0028716F4D363 /* charin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = charin.wav; sourceTree = "<group>"; };
 		13D437F1948F189C16571587 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		15AFBC96DDF328A0F5CEF54B /* PendingIncomeSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PendingIncomeSync.swift; sourceTree = "<group>"; };
 		181099B05A4358B64F01CEF9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1A4394A65214E3038DF01945 /* ProGateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProGateView.swift; sourceTree = "<group>"; };
 		2511624BB116A136D576DA09 /* InvoiceRenderer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvoiceRenderer.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				68442ADFBC47EEEEAFA55B29 /* NotificationManager.swift */,
 				FEC0B7F94BA0DFF4A95E8C1E /* OnboardingView.swift */,
 				C306C993F420A1DCB2FEA9A8 /* PaymentReminderView.swift */,
+				15AFBC96DDF328A0F5CEF54B /* PendingIncomeSync.swift */,
 				1A4394A65214E3038DF01945 /* ProGateView.swift */,
 				7641CB1F0B6C74CE2FC1BDC3 /* ReportView.swift */,
 				9FCFF97A42B0918AFCA30FF4 /* SeedData.swift */,
@@ -288,6 +291,7 @@
 				6A4F4398126A6024BD9CADE2 /* NotificationManager.swift in Sources */,
 				55A3D657D64E789E7B82666F /* OnboardingView.swift in Sources */,
 				48EADD18AE96CB6573FD4508 /* PaymentReminderView.swift in Sources */,
+				D6CBA8353D8A9E7D651CE8F6 /* PendingIncomeSync.swift in Sources */,
 				CC5D16FC14D33AEE0A2E67BB /* ProGateView.swift in Sources */,
 				4EE8DB4CC04977A55C15AA1F /* ReportView.swift in Sources */,
 				7A2913C43432BA0B0748B64B /* SeedData.swift in Sources */,
@@ -343,7 +347,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 5BV85JW8US;
 				ENABLE_NS_ASSERTIONS = NO;
@@ -421,7 +425,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 5BV85JW8US;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;

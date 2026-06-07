@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 import MessageUI
 import UIKit
+import UserNotifications
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var context
@@ -10,6 +11,15 @@ struct SettingsView: View {
     @AppStorage("userName") private var userName = ""
     @AppStorage("invoiceRegistrationNumber") private var registrationNumber = ""
     @AppStorage("csvEmailAddress") private var csvEmail = ""
+    @AppStorage("charinApiKey") private var charinApiKey = ""
+    @AppStorage("fanClubEmail") private var fanClubEmail = ""
+    @State private var isSettingUp = false
+    @State private var copiedWebhook = false
+    @State private var pushStatus = "確認中..."
+
+    private var webhookURL: String {
+        "https://kacha-server.fly.dev/api/v1/charin/wh/\(charinApiKey)"
+    }
     @State private var showExportSheet = false
     @State private var showDeleteAlert = false
     @State private var showEmailSent = false
@@ -59,6 +69,130 @@ struct SettingsView: View {
                     }
                 } header: {
                     Text("インボイス設定")
+                }
+
+                // 通知設定
+                Section {
+                    Button {
+                        Task {
+                            let center = UNUserNotificationCenter.current()
+                            let settings = await center.notificationSettings()
+                            if settings.authorizationStatus == .notDetermined {
+                                let granted = try? await center.requestAuthorization(options: [.alert, .sound, .badge])
+                                if granted == true {
+                                    await MainActor.run { UIApplication.shared.registerForRemoteNotifications() }
+                                    pushStatus = "許可済み"
+                                }
+                            } else if settings.authorizationStatus == .denied {
+                                // 設定アプリに飛ばす
+                                await MainActor.run {
+                                    if let url = URL(string: UIApplication.openSettingsURLString) {
+                                        UIApplication.shared.open(url)
+                                    }
+                                }
+                            } else {
+                                await MainActor.run { UIApplication.shared.registerForRemoteNotifications() }
+                                pushStatus = "許可済み"
+                            }
+                        }
+                    } label: {
+                        HStack {
+                            Label("プッシュ通知", systemImage: pushStatus == "許可済み" ? "bell.fill" : "bell.badge")
+                                .foregroundStyle(pushStatus == "許可済み" ? Color.charinSuccess : Color.charin)
+                            Spacer()
+                            Text(pushStatus)
+                                .font(.system(size: 13))
+                                .foregroundStyle(pushStatus == "許可済み" ? Color.charinSuccess : .secondary)
+                        }
+                    }
+                } header: {
+                    Text("通知")
+                } footer: {
+                    Text("売上が入ったときにプッシュ通知でチャリン音が届きます。")
+                }
+
+                // Stripe連携
+                Section {
+                    if charinApiKey.isEmpty {
+                        // 未連携 → 連携ボタン
+                        Button {
+                            Task { await setupStripeLink() }
+                        } label: {
+                            HStack {
+                                Image(systemName: "link.badge.plus")
+                                    .foregroundStyle(Color.charin)
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text("Stripeと連携する")
+                                        .font(.system(size: 15, weight: .semibold))
+                                    Text("決済が入るとチャリン音で通知")
+                                        .font(.system(size: 11))
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                if isSettingUp {
+                                    ProgressView()
+                                } else {
+                                    Image(systemName: "chevron.right")
+                                        .font(.system(size: 12))
+                                        .foregroundStyle(.tertiary)
+                                }
+                            }
+                        }
+                        .disabled(isSettingUp)
+                    } else {
+                        // 連携済み → Webhook URL表示
+                        VStack(alignment: .leading, spacing: 10) {
+                            HStack(spacing: 6) {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundStyle(Color.charinSuccess)
+                                Text("Stripe連携済み")
+                                    .font(.system(size: 14, weight: .semibold))
+                                    .foregroundStyle(Color.charinSuccess)
+                            }
+
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text("Webhook URL")
+                                    .font(.system(size: 11))
+                                    .foregroundStyle(.tertiary)
+                                Text(webhookURL)
+                                    .font(.system(size: 10, design: .monospaced))
+                                    .foregroundStyle(.secondary)
+                                    .lineLimit(2)
+                            }
+
+                            Button {
+                                UIPasteboard.general.string = webhookURL
+                                copiedWebhook = true
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2) { copiedWebhook = false }
+                            } label: {
+                                HStack {
+                                    Image(systemName: copiedWebhook ? "checkmark" : "doc.on.doc")
+                                    Text(copiedWebhook ? "コピーしました" : "Webhook URLをコピー")
+                                }
+                                .font(.system(size: 13, weight: .semibold))
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical, 10)
+                                .background(copiedWebhook ? Color.charinSuccess : Color.charin)
+                                .clipShape(RoundedRectangle(cornerRadius: 8))
+                            }
+
+                            Button(role: .destructive) {
+                                charinApiKey = ""
+                            } label: {
+                                Text("連携を解除")
+                                    .font(.system(size: 12))
+                            }
+                        }
+                    }
+                } header: {
+                    Text("売上自動連携 (Stripe)")
+                } footer: {
+                    if charinApiKey.isEmpty {
+                        Text("Stripeの売上が入るたびに、チャリン音とともに収入が自動記録されます。")
+                    } else {
+                        Text("上のWebhook URLをStripe Dashboard → Developers → Webhooks に追加してください。イベントは checkout.session.completed, invoice.paid, payment_intent.succeeded を選択。")
+                    }
                 }
 
                 // Stats
@@ -183,6 +317,34 @@ struct SettingsView: View {
                     Text("チャリン - 届いた、チャリン。収入はチャリン、支出はパシャ。")
                 }
 
+                // Enabler ファンクラブ
+                Section {
+                    HStack {
+                        Label("メールアドレス", systemImage: "envelope.fill")
+                            .foregroundStyle(Color.charin)
+                        Spacer()
+                        TextField("Stripe登録メール", text: $fanClubEmail)
+                            .multilineTextAlignment(.trailing)
+                            .font(.system(size: 14))
+                            .keyboardType(.emailAddress)
+                            .autocapitalization(.none)
+                    }
+                    Button {
+                        Task { await sub.updateSubscriptionStatus() }
+                    } label: {
+                        HStack {
+                            Image(systemName: "arrow.triangle.2.circlepath")
+                            Text("Pro状態を確認")
+                        }
+                        .font(.system(size: 14, weight: .semibold))
+                        .foregroundStyle(Color.charin)
+                    }
+                } header: {
+                    Text("Enabler ファンクラブ")
+                } footer: {
+                    Text("ファンクラブ(¥980/月)に加入済みの方は、Stripeに登録したメールアドレスを入力するとProが有効になります。")
+                }
+
                 // Subscription
                 Section {
                     if sub.isPro {
@@ -230,6 +392,15 @@ struct SettingsView: View {
             .background(Color.charinBg)
             .navigationTitle("設定")
             .navigationBarTitleDisplayMode(.inline)
+            .task {
+                let s = await UNUserNotificationCenter.current().notificationSettings()
+                switch s.authorizationStatus {
+                case .authorized, .provisional: pushStatus = "許可済み"
+                case .denied: pushStatus = "設定で許可してください"
+                case .notDetermined: pushStatus = "タップして許可"
+                default: pushStatus = "不明"
+                }
+            }
             .sheet(isPresented: $showProGate) {
                 ProGateView().presentationDetents([.large])
             }
@@ -331,6 +502,35 @@ struct SettingsView: View {
                     .font(.caption)
                     .foregroundStyle(.tertiary)
             }
+        }
+    }
+
+    // MARK: - Stripe Setup
+
+    private func setupStripeLink() async {
+        isSettingUp = true
+        defer { isSettingUp = false }
+
+        let label = userName.isEmpty ? "チャリンユーザー" : userName
+        guard let url = URL(string: "https://kacha-server.fly.dev/api/v1/charin/apikey") else { return }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = try? JSONSerialization.data(withJSONObject: ["user_label": label])
+
+        do {
+            let (data, response) = try await URLSession.shared.data(for: request)
+            guard let http = response as? HTTPURLResponse, http.statusCode == 201 else { return }
+            if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+               let key = json["api_key"] as? String {
+                await MainActor.run {
+                    charinApiKey = key
+                    SoundPlayer.shared.play("charin")
+                }
+            }
+        } catch {
+            print("[Charin] Setup error: \(error)")
         }
     }
 }

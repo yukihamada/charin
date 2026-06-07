@@ -1,8 +1,32 @@
 import SwiftUI
 import SwiftData
+import UIKit
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    var container: ModelContainer?
+
+    func application(_ application: UIApplication,
+                     didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        NotificationManager.shared.registerPushToken(deviceToken)
+    }
+
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable: Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let income = NotificationManager.handleRevenuePush(userInfo: userInfo),
+           let ctx = container?.mainContext {
+            ctx.insert(income)
+            try? ctx.save()
+            completionHandler(.newData)
+        } else {
+            completionHandler(.noData)
+        }
+    }
+}
 
 @main
 struct CharinApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let container: ModelContainer
     @StateObject private var subscriptionManager = SubscriptionManager.shared
 
@@ -16,7 +40,6 @@ struct CharinApp: App {
         do {
             container = try ModelContainer(for: schema, configurations: config)
         } catch {
-            // Fallback to in-memory
             let fallback = ModelConfiguration(
                 "CharinStore",
                 schema: schema,
@@ -33,12 +56,14 @@ struct CharinApp: App {
                 .environmentObject(subscriptionManager)
                 .preferredColorScheme(.dark)
                 .onAppear {
+                    appDelegate.container = container
                     SeedData.insertIfEmpty(context: container.mainContext)
                     ClientManager.seedIfEmpty(context: container.mainContext)
                     Task {
-                        #if !targetEnvironment(simulator)
+                        // Always request push permission + register
                         await NotificationManager.shared.requestPermission()
-                        #endif
+                        // Fetch pending income from server
+                        await PendingIncomeSync.fetch(context: container.mainContext)
                     }
                 }
         }

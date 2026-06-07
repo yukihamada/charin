@@ -10,13 +10,17 @@ settings:
     DEVELOPMENT_TEAM: 5BV85JW8US
     CODE_SIGN_STYLE: Automatic
     SWIFT_VERSION: "5.9"
-    CURRENT_PROJECT_VERSION: 2
+    CURRENT_PROJECT_VERSION: 5
     MARKETING_VERSION: "1.0.0"
 
 targets:
   Charin:
     type: application
     platform: iOS
+    entitlements:
+      path: Charin/Charin.entitlements
+      properties:
+        aps-environment: development
     sources:
       - path: Charin/Sources
       - path: Charin/Resources

@@ -6,6 +6,12 @@ struct ProGateView: View {
     @StateObject private var sub = SubscriptionManager.shared
     @State private var showError = false
 
+    /// 購入/復元操作中に発生したエラーのみアラート表示する
+    /// （商品取得エラーはインラインの再試行UIで処理する）
+    private var shouldShowErrorAlert: Bool {
+        sub.purchaseError != nil && sub.proProduct != nil
+    }
+
     private let features: [(icon: String, text: String)] = [
         ("doc.text.fill", "無制限の請求書作成"),
         ("arrow.down.doc.fill", "PDFエクスポート"),
@@ -37,7 +43,7 @@ struct ProGateView: View {
             .alert("エラー", isPresented: $showError, presenting: sub.purchaseError) { _ in
                 Button("OK") { sub.purchaseError = nil }
             } message: { msg in Text(msg) }
-            .onChange(of: sub.purchaseError) { _, new in showError = new != nil }
+            .onChange(of: sub.purchaseError) { _, new in showError = new != nil && sub.proProduct != nil }
             .onChange(of: sub.isPro) { _, isPro in if isPro { dismiss() } }
         }
     }
@@ -107,51 +113,89 @@ struct ProGateView: View {
 
     private var purchaseSection: some View {
         VStack(spacing: 14) {
-            VStack(spacing: 4) {
-                Text(sub.formattedPrice)
-                    .font(.system(size: 36, weight: .heavy, design: .rounded))
-                Text("月額・いつでもキャンセル可能")
-                    .font(.caption).foregroundStyle(.secondary)
-            }
-
-            Button {
-                Task { await sub.purchasePro() }
-            } label: {
-                HStack(spacing: 8) {
-                    if sub.isPurchasing {
-                        ProgressView().progressViewStyle(.circular).tint(.white).scaleEffect(0.85)
-                    } else {
-                        Image(systemName: "crown.fill")
-                    }
-                    Text(sub.isPurchasing ? "処理中..." : "Proにアップグレード")
-                        .font(.headline)
+            // 商品取得中ローディング
+            if sub.isLoadingProduct {
+                VStack(spacing: 8) {
+                    ProgressView().progressViewStyle(.circular)
+                    Text("商品情報を取得中...")
+                        .font(.caption).foregroundStyle(.secondary)
                 }
-                .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
-                .padding(.vertical, 16)
-                .background(
-                    LinearGradient(colors: [.charin, .charinSuccess],
-                                   startPoint: .leading, endPoint: .trailing),
-                    in: RoundedRectangle(cornerRadius: 14)
-                )
-            }
-            .disabled(sub.isPurchasing || sub.proProduct == nil)
-            .padding(.horizontal, 16)
+                .padding(.vertical, 20)
+            } else if sub.proProduct == nil && sub.purchaseError != nil {
+                // 取得失敗時：再試行ボタン
+                VStack(spacing: 12) {
+                    Label("商品情報を取得できませんでした", systemImage: "wifi.slash")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                        .multilineTextAlignment(.center)
 
-            Button {
-                Task { await sub.restorePurchases() }
-            } label: {
-                Text("購入を復元する").font(.subheadline).foregroundStyle(Color.charin)
+                    Button {
+                        Task { await sub.fetchProduct() }
+                    } label: {
+                        Label("再試行", systemImage: "arrow.clockwise")
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(.vertical, 12)
+                            .background(Color.charin, in: RoundedRectangle(cornerRadius: 12))
+                    }
+                    .padding(.horizontal, 16)
+                }
+                .padding(.vertical, 8)
+            } else {
+                // 通常表示
+                VStack(spacing: 4) {
+                    Text(sub.formattedPrice)
+                        .font(.system(size: 36, weight: .heavy, design: .rounded))
+                    Text("月額・いつでもキャンセル可能")
+                        .font(.caption).foregroundStyle(.secondary)
+                }
+
+                Button {
+                    Task { await sub.purchasePro() }
+                } label: {
+                    HStack(spacing: 8) {
+                        if sub.isPurchasing {
+                            ProgressView().progressViewStyle(.circular).tint(.white).scaleEffect(0.85)
+                        } else {
+                            Image(systemName: "crown.fill")
+                        }
+                        Text(sub.isPurchasing ? "処理中..." : "Proにアップグレード")
+                            .font(.headline)
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(
+                        LinearGradient(colors: [.charin, .charinSuccess],
+                                       startPoint: .leading, endPoint: .trailing),
+                        in: RoundedRectangle(cornerRadius: 14)
+                    )
+                }
+                .disabled(sub.isPurchasing || sub.proProduct == nil)
+                .padding(.horizontal, 16)
+
+                Button {
+                    Task { await sub.restorePurchases() }
+                } label: {
+                    Text("購入を復元する").font(.subheadline).foregroundStyle(Color.charin)
+                }
+                .disabled(sub.isPurchasing)
             }
-            .disabled(sub.isPurchasing)
+        }
+        .task {
+            if sub.proProduct == nil && !sub.isLoadingProduct {
+                await sub.fetchProduct()
+            }
         }
     }
 
     private var footerSection: some View {
         HStack(spacing: 16) {
-            Link("利用規約", destination: URL(string: "https://charin.app/terms")!)
+            Link("利用規約", destination: URL(string: "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/")!)
             Text("·").foregroundStyle(.tertiary)
-            Link("プライバシーポリシー", destination: URL(string: "https://charin.app/privacy")!)
+            Link("プライバシーポリシー", destination: URL(string: "https://enablerdao.com/privacy")!)
         }
         .font(.caption).foregroundStyle(.secondary)
     }
