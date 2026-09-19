@@ -9,11 +9,19 @@ class SubscriptionManager: ObservableObject {
 
     @Published var isPro = false
     @Published var isPurchasing = false
+    @Published var isLoadingProduct = false
     @Published var purchaseError: String?
     @Published var proProduct: Product?
     @Published var expirationDate: Date?
 
     private var transactionListener: Task<Void, Never>?
+
+    /// タイムアウト秒数
+    private let fetchTimeoutSeconds: Double = 15
+    /// 最大リトライ回数
+    private let maxRetryCount = 3
+    /// 指数バックオフの基準秒数（1s, 2s, 4s）
+    private let retryBaseDelay: Double = 1.0
 
     var formattedPrice: String { proProduct?.displayPrice ?? "¥480/月" }
 
@@ -27,12 +35,56 @@ class SubscriptionManager: ObservableObject {
 
     deinit { transactionListener?.cancel() }
 
+    /// 商品情報を取得する（15秒タイムアウト・最大3回リトライ・指数バックオフ）
     func fetchProduct() async {
-        do {
-            let products = try await Product.products(for: [Self.proProductID])
-            proProduct = products.first
-        } catch {
-            print("[SubscriptionManager] fetchProduct error: \(error)")
+        guard !isLoadingProduct else { return }
+        isLoadingProduct = true
+        defer { isLoadingProduct = false }
+
+        for attempt in 0..<maxRetryCount {
+            // 2回目以降は指数バックオフ待機
+            if attempt > 0 {
+                let delay = retryBaseDelay * pow(2.0, Double(attempt - 1)) // 1s, 2s, 4s
+                print("[SubscriptionManager] リトライ \(attempt)/\(maxRetryCount - 1)（\(Int(delay))秒後）")
+                try? await Task.sleep(for: .seconds(delay))
+            }
+
+            do {
+                // タイムアウト付きで商品情報を取得
+                let products = try await withTimeout(seconds: fetchTimeoutSeconds) {
+                    try await Product.products(for: [Self.proProductID])
+                }
+                proProduct = products.first
+                // 成功したらエラーをクリアしてループ終了
+                if proProduct != nil {
+                    purchaseError = nil
+                }
+                return
+            } catch is TimeoutError {
+                print("[SubscriptionManager] fetchProduct タイムアウト (attempt \(attempt + 1))")
+                if attempt == maxRetryCount - 1 {
+                    purchaseError = "商品情報の取得がタイムアウトしました。ネットワーク環境を確認して再試行してください。"
+                }
+            } catch {
+                print("[SubscriptionManager] fetchProduct error (attempt \(attempt + 1)): \(error)")
+                if attempt == maxRetryCount - 1 {
+                    purchaseError = "商品情報を取得できませんでした。ネットワーク環境を確認して再試行してください。"
+                }
+            }
+        }
+    }
+
+    /// タイムアウト付き非同期実行ヘルパー
+    private func withTimeout<T: Sendable>(seconds: Double, operation: @escaping @Sendable () async throws -> T) async throws -> T {
+        try await withThrowingTaskGroup(of: T.self) { group in
+            group.addTask { try await operation() }
+            group.addTask {
+                try await Task.sleep(for: .seconds(seconds))
+                throw TimeoutError()
+            }
+            let result = try await group.next()!
+            group.cancelAll()
+            return result
         }
     }
 
@@ -104,3 +156,7 @@ class SubscriptionManager: ObservableObject {
         }
     }
 }
+
+// MARK: - TimeoutError
+
+private struct TimeoutError: Error {}

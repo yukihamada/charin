@@ -38,8 +38,8 @@ struct CharinShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: AddIncomeIntent(),
             phrases: [
-                "チャリンで収入を記録",
-                "収入を追加",
+                "\(.applicationName)で収入を記録",
+                "\(.applicationName)に収入を追加",
                 "Record income with \(.applicationName)"
             ],
             shortTitle: "収入を記録",
@@ -48,8 +48,8 @@ struct CharinShortcuts: AppShortcutsProvider {
         AppShortcut(
             intent: CheckUnpaidIntent(),
             phrases: [
-                "未払い請求書を確認",
-                "チャリンで未払い確認",
+                "\(.applicationName)で未払い請求書を確認",
+                "\(.applicationName)で未払い確認",
                 "Check unpaid invoices with \(.applicationName)"
             ],
             shortTitle: "未払い確認",
